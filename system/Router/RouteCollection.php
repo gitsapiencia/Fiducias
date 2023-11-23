@@ -45,7 +45,7 @@ class RouteCollection implements RouteCollectionInterface
      * @var string
      */
     //protected $defaultController = 'Home';
-    protected $defaultController = 'Dashboard';
+    protected $defaultController = 'Auth';
 
     /**
      * The name of the default method to use

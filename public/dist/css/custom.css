@@ -1,0 +1,21 @@
+
+/* Agrega estos estilos en tu archivo de estilos CSS */
+.custom-card-body {
+    border: 1px solid #ddd; /* Ajusta el grosor y color del borde según tus preferencias */
+    padding: 1%; /* Ajusta el relleno según tus preferencias */
+    margin: 1%; /* Ajusta el margen según tus preferencias */
+    border-radius: 10px;
+}
+
+
+.card-footer-center {
+    text-align: center;
+}
+
+.card-footer-rigth {
+    text-align: right;
+}
+
+.card-footer-left {
+    text-align: left;
+}
