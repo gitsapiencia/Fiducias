@@ -264,5 +264,40 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.9.0/js/bootstrap-datepicker.min.js"></script>
 -->
 
+
+
+<script>
+    // Función para agregar una fila a la tabla de Aumento o Disminución
+    function agregarFila(tipo) {
+        var newRow = "<tr>" +
+            "<td><select class='form-control' name='" + tipo + "_tipo[]'>" +
+                "<option value='Adiciones'>Adiciones</option>" +
+                "<option value='Rendimientos de Inversiones'>Rendimientos de Inversiones</option>" +
+                "<option value='Ingreso por Recaudo'>Ingreso por Recaudo</option>" +
+                "<option value='Ingreso por Débito Automático'>Ingreso por Débito Automático</option>" +
+                "<option value='Intereses de Crédito'>Intereses de Crédito</option>" +
+                "<option value='Reintegro Cartera'>Reintegro Cartera</option>" +
+                "<option value='Otros Ingresos'>Otros Ingresos</option>" +
+                "<option value='Partida Conciliatoria Ingresos'>Partida Conciliatoria Ingresos</option>" +
+                "<option value='Condonaciones'>Condonaciones</option>" +
+                "<option value='Comision Pagada'>Comisión Pagada</option>" +
+                "<option value='Desembolso Matricula'>Desembolso Matrícula</option>" +
+                "<option value='Desembolso Sostenimiento'>Desembolso Sostenimiento</option>" +
+                "<option value='Reintegro de Rendimiento'>Reintegro de Rendimiento</option>" +
+                "<option value='Gasto Bancario'>Gasto Bancario</option>" +
+                "<option value='Otros Egresos'>Otros Egresos</option>" +
+                "<option value='Partida Conciliatoria'>Partida Conciliatoria</option>" +
+            "</select></td>" +
+            "<td><input type='text' class='form-control' name='" + tipo + "_valor[]'></td>" +
+            "</tr>";
+
+        if (tipo === 'aumento') {
+            $("#aumento_table_body").append(newRow);
+        } else if (tipo === 'disminucion') {
+            $("#disminucion_table_body").append(newRow);
+        }
+    }
+</script>
+
 </body>
 </html>
