@@ -1,8 +1,13 @@
 <?=  $this->extend('templates/admin_template') ?> 
 <?=  $this->section('content') ?> 
 
+
+<!-- Contenido del formulario de contratos -->
+
+
+
 <h2 style="padding: 1%;">CONTRATOS</h2>
-    <form>
+    <form action="<?= base_url('guardarContrato'); ?>" method="post">
         <div class="card custom-card-body">
             <div class="card-body custom-card-body">
                 
@@ -10,7 +15,8 @@
                 <div class="row">
                     <div class="form-group col-lg-3 col-6">
                         <label for="contrato">Contrato</label>
-                        <input type="text" class="form-control" id="contrato" placeholder="Número de Contrato">
+                        <input type="text" class="form-control" id="contrato" placeholder="Número de Contrato" 
+                        value="<?= isset($contrato['numero_contrato']) ? esc($contrato['numero_contrato']) : ''; ?>">
                     </div>
                     <div class="form-group col-lg-3 col-6">
                         <label for="lineas_fondo">Lineas o Fondo</label>
@@ -20,52 +26,47 @@
                             <option value="opcion2">Opción 2</option>
                         </select>
                     </div>
-                    <div class="form-group col-lg-3 col-6">
-                        <label for="lineas_fondo"></label>
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" id="check_epm">
-                            <label class="form-check-label" for="check_epm">EPM</label>
-                        </div>
-                    
-                        <div class="form-check">
-                                <input type="checkbox" class="form-check-input" id="check_todos">
-                                <label class="form-check-label" for="check_todos">Todos</label>
-                        </div>
-                    </div>
                 </div>
                 
                 
                 <div class="row">
                     <div class="form-group col-lg-3 col-6">
                         <label for="operador_financiero">Operador Financiero</label>
-                        <input type="text" class="form-control" id="operador_financiero" placeholder="Nombre del Operador Financiero">
+                        <input type="text" class="form-control" id="operador_financiero" placeholder="Nombre del Operador Financiero"
+                        value="<?= isset($contrato['operador_financiero']) ? esc($contrato['operador_financiero']) : ''; ?>">
                     </div>
                     <div class="form-group col-lg-3 col-6">
                         <label for="fecha_inicial">Fecha Inicial</label>
-                        <input type="text" class="form-control datepicker" id="fecha_inicial" placeholder="Fecha Inicial">
+                        <input type="text" class="form-control datepicker" id="fecha_inicial" placeholder="Fecha Inicial"
+                        value="<?= isset($contrato['fecha_inicial']) ? esc($contrato['fecha_inicial']) : ''; ?>">
                     </div>
                     <div class="form-group col-lg-3 col-6">
                         <label for="fecha_final">Fecha Final</label>
-                        <input type="text" class="form-control datepicker" id="fecha_final" placeholder="Fecha Final">
+                        <input type="text" class="form-control datepicker" id="fecha_final" placeholder="Fecha Final"
+                        value="<?= isset($contrato['fecha_final']) ? esc($contrato['fecha_final']) : ''; ?>">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-group col-lg-3 col-6">
                         <label for="recurso_inicial">Recurso Inicial</label>
-                        <input type="text" class="form-control" id="recurso_inicial" placeholder="Valor del Recurso Inicial ($)" readonly>
+                        <input type="text" class="form-control" id="recurso_inicial" placeholder="Valor del Recurso Inicial ($)" 
+                        value="<?= isset($contrato['recurso_inicial']) ? esc($contrato['recurso_inicial']) : ''; ?>" readonly>
                     </div>
                     <div class="form-group col-lg-3 col-6">
                         <label for="comision">Comisión</label>
-                        <input type="text" class="form-control" id="comision" placeholder="Valor de la Comisión ($)" readonly>
+                        <input type="text" class="form-control" id="comision" placeholder="Valor de la Comisión ($)"
+                        value="<?= isset($contrato['comision']) ? esc($contrato['comision']) : ''; ?>" readonly>
                     </div>
                     <div class="form-group col-lg-3 col-6">
                         <label for="porcentaje_comision">% Comisión</label>
-                        <input type="text" class="form-control" id="porcentaje_comision" placeholder="% Comisión" readonly>
+                        <input type="text" class="form-control" id="porcentaje_comision" placeholder="% Comisión"
+                        value="<?= isset($contrato['porcentaje_comision']) ? esc($contrato['porcentaje_comision']) : ''; ?>" readonly>
                     </div>
                     <div class="form-group col-lg-3 col-6">
                         <label for="porcentaje_adicion">% Adición</label>
-                        <input type="text" class="form-control" id="porcentaje_adicion" placeholder="% Adición" readonly>
+                        <input type="text" class="form-control" id="porcentaje_adicion" placeholder="% Adición"
+                        value="<?= isset($contrato['porcentaje_adicion']) ? esc($contrato['porcentaje_adicion']) : ''; ?>" readonly>
                     </div>
                 </div>
             </div>
@@ -109,10 +110,14 @@
             <div class="card-footer card-footer-center">
                 <button type="submit" class="btn btn-primary">Guardar</button>
             </div>
+
+            <?php if (isset($contrato['id'])) : ?>
+                    <!-- Si se está editando, incluir un campo oculto con el ID -->
+                    <input type="hidden" name="id" value="<?= esc($contrato['id']); ?>">
+            <?php endif; ?>
+
         </div>
     </form>
-
-
 
 
 <?=  $this->endSection() ?> 

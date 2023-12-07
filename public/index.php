@@ -34,6 +34,9 @@ if (getcwd() . DIRECTORY_SEPARATOR !== FCPATH) {
 require FCPATH . '../app/Config/Paths.php';
 // ^^^ Change this line if you move your application folder
 
+require __DIR__ . '/../vendor/autoload.php';
+
+
 $paths = new Config\Paths();
 
 // Location of the framework bootstrap file.
@@ -42,6 +45,10 @@ require rtrim($paths->systemDirectory, '\\/ ') . DIRECTORY_SEPARATOR . 'bootstra
 // Load environment settings from .env files into $_SERVER and $_ENV
 require_once SYSTEMPATH . 'Config/DotEnv.php';
 (new CodeIgniter\Config\DotEnv(ROOTPATH))->load();
+
+
+define('CI_ENVIRONMENT', 'development');
+
 
 // Define ENVIRONMENT
 if (! defined('ENVIRONMENT')) {
@@ -62,6 +69,8 @@ if (! defined('ENVIRONMENT')) {
  * the application run, and does all the dirty work to get
  * the pieces all working together.
  */
+
+
 
 $app = Config\Services::codeigniter();
 $app->initialize();
