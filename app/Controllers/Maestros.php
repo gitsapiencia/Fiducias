@@ -40,17 +40,41 @@ class Maestros extends BaseController
         return view('maestros/contratos', $data);
     }
 
-    // Método para procesar el formulario y guardar o actualizar el contrato
+
+
     public function guardarContrato()
     {
-        // Lógica para validar y guardar o actualizar el contrato en la base de datos
-
+        // Obtener datos del formulario
+        $datosContrato = [
+            'numero_contrato' => $this->request->getPost('numero_contrato'),
+            'lineas_fondo' => $this->request->getPost('lineas_fondo'),
+            'operador_financiero' => $this->request->getPost('operador_financiero'),
+            'fecha_inicial' => $this->request->getPost('fecha_inicial'),
+            'fecha_final' => $this->request->getPost('fecha_final'),
+            'recurso_inicial' => $this->request->getPost('recurso_inicial'),
+            'comision' => $this->request->getPost('comision'),
+            'porcentaje_comision' => $this->request->getPost('porcentaje_comision'),
+            'porcentaje_adicion' => $this->request->getPost('porcentaje_adicion'),
+            // Agrega más campos según sea necesario
+        ];
+    
+        // Lógica para validar los datos del formulario
+        // ...
+    
+        // Instanciar el modelo de contrato
+        $contratoModel = new ContratoModel();
+    
+        // Si hay un ID, actualiza el contrato; de lo contrario, crea un nuevo contrato
+        if ($this->request->getPost('id')) {
+            $contratoModel->update($this->request->getPost('id'), $datosContrato);
+        } else {
+            $contratoModel->insert($datosContrato);
+        }
+    
         // Redirigir a la lista de contratos después de guardar o actualizar
         return redirect()->to('listacontratos');
     }
-
-
-
+    
 
 
 

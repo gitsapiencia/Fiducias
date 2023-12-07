@@ -11,7 +11,8 @@ $routes->get('contratos/(:num)?', 'Maestros::contratos/$1');
 $routes->get('contratos', 'Maestros::contratos');
 
 $routes->get('listacontratos', 'Maestros::listacontratos');
-$routes->get('guardarContrato', 'Maestros::guardarContrato');
+$routes->post('guardarContrato', 'Maestros::guardarContrato');
+
 
 
 

@@ -15,8 +15,6 @@
             <th>ID</th>
             <th>Número de Contrato</th>
             <th>Lineas o Fondo</th>
-            <th>EPM</th>
-            <th>Todos</th>
             <th>Operador Financiero</th>
             <th>Fecha Inicial</th>
             <th>Fecha Final</th>
@@ -36,8 +34,6 @@
                 <td><?= $contrato['id']; ?></td>
                 <td><?= $contrato['numero_contrato']; ?></td>
                 <td><?= $contrato['lineas_fondo']; ?></td>
-                <td><?= $contrato['epm'] ? 'Sí' : 'No'; ?></td>
-                <td><?= $contrato['todos'] ? 'Sí' : 'No'; ?></td>
                 <td><?= $contrato['operador_financiero']; ?></td>
                 <td><?= $contrato['fecha_inicial']; ?></td>
                 <td><?= $contrato['fecha_final']; ?></td>
